@@ -12,6 +12,8 @@ class CommentEditController: UIViewController {
     
     var articleId:String!
     var is_article:Bool!
+    var userId:String?
+    var articleTitle:String!
     
    // @IBOutlet weak var textView: UITextView!
     
@@ -41,6 +43,14 @@ class CommentEditController: UIViewController {
                     }
                     KVNProgress.dismiss()
                     KVNProgress.showSuccessWithStatus("发表成功")
+                    if self.is_article == true{
+                        var pushQ = AVInstallation.query()
+                        pushQ.whereKey("userId", equalTo: self.userId!)
+                        var push = AVPush()
+                        push.setQuery(pushQ)
+                        push.setMessage("您的文章\(self.articleTitle)收到一条回复")
+                        push.sendPushInBackground()
+                    }
                     self.navigationController?.popViewControllerAnimated(true)
                 } else {
                     KVNProgress.dismiss()

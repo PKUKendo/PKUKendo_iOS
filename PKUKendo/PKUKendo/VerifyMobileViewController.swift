@@ -27,6 +27,12 @@ class VerifyMobileViewController: UIViewController {
                     AVUser.logInWithUsernameInBackground(self.user.username, password: self.user.password){
                         (user :AVUser!, error :NSError!) -> Void in
                         if user != nil {
+                            AVUser.currentUser().setObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "installation")
+                            AVUser.currentUser().saveEventually()
+                            if AVInstallation.currentInstallation() != nil{
+                                AVInstallation.currentInstallation().setObject(AVUser.currentUser().objectId, forKey: "userId")
+                                AVInstallation.currentInstallation().saveEventually()
+                            }
                             me.username = AVUser.currentUser().username
                             me.nickname = AVUser.currentUser().objectForKey("NickName") as? String
                              me.avartar = UIImage(named: "1")

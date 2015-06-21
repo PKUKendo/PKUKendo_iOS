@@ -75,13 +75,16 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
             (segue.destinationViewController as! ArticleEditViewController).content = article!.content
             
         }else {
-        if is_article == true{
-            (segue.destinationViewController as! CommentEditController).articleId = article!.id
-            (segue.destinationViewController as! CommentEditController).is_article = is_article
-        } else {
-            (segue.destinationViewController as! CommentEditController).articleId = notice!.id
-            (segue.destinationViewController as! CommentEditController).is_article = is_article
-        }
+            if is_article == true{
+                (segue.destinationViewController as! CommentEditController).articleId = article!.id
+                (segue.destinationViewController as! CommentEditController).is_article = is_article
+                (segue.destinationViewController as! CommentEditController).userId = article!.userId
+                (segue.destinationViewController as! CommentEditController).articleTitle = article!.title
+            } else {
+                (segue.destinationViewController as! CommentEditController).articleId = notice!.id
+                (segue.destinationViewController as! CommentEditController).is_article = is_article
+                (segue.destinationViewController as! CommentEditController).articleTitle = article!.title
+            }
         }
     }
     
@@ -101,6 +104,14 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
                     likeObj.setObject(AVUser.currentUser().objectId, forKey: "user")
                     likeObj.setObject(self.article!.id, forKey: "article")
                     likeObj.saveEventually()
+                    
+                    var pushQ = AVInstallation.query()
+                    pushQ.whereKey("userId", equalTo: self.article!.userId)
+                    var push = AVPush()
+                    push.setQuery(pushQ)
+                    push.setMessage("您的文章\(self.article!.title)收到一条点赞")
+                    push.sendPushInBackground()
+                    
                     if err == nil {
                         self.article!.likeNum! += 1
                         var cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0))! as UITableViewCell

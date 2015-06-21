@@ -122,6 +122,12 @@ class detailInfoController: UITableViewController, UIAlertViewDelegate, UIImageP
     
     
     @IBAction func Logout(sender: AnyObject) {
+        AVUser.currentUser().setObject("", forKey: "installation")
+        AVUser.currentUser().saveEventually()
+        if AVInstallation.currentInstallation() != nil{
+            AVInstallation.currentInstallation().setObject("", forKey: "userId")
+            AVInstallation.currentInstallation().saveEventually()
+        }
         AVUser.logOut()
         performSegueWithIdentifier("logout", sender: nil)
         

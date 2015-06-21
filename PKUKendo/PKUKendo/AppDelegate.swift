@@ -46,6 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            self.window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
 //            (self.window?.rootViewController as! UITabBarController).selectedIndex = 1
 //        }
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Badge | UIUserNotificationType.Alert |
+            UIUserNotificationType.Sound, categories: nil))
+        application.registerForRemoteNotifications()
         
         var currentUser = AVUser.currentUser()
         if (currentUser == nil) {
@@ -73,6 +76,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return true
+    }
+    
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        var installation = AVInstallation.currentInstallation();
+        installation.setDeviceTokenFromData(deviceToken)
+        var installationId:String = UIDevice.currentDevice().identifierForVendor.UUIDString
+        installation.saveInBackgroundWithBlock(){
+            (success:Bool, error:NSError!) -> Void in
+            if success {
+                println("成功inst")
+            }
+            else {
+                println("错误\(error)")
+            }
+        }
+        
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        println("Couldn’t register: \(error)")
     }
 
     func applicationWillResignActive(application: UIApplication) {

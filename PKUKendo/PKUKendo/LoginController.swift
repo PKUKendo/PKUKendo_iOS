@@ -35,6 +35,13 @@ class LoginController: UIViewController {
             if error == nil {
                 KVNProgress.dismiss()
                 KVNProgress.showSuccessWithStatus("登陆成功")
+               // if AVInstallation.currentInstallation()
+                AVUser.currentUser().setObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "installation")
+                AVUser.currentUser().saveEventually()
+                if AVInstallation.currentInstallation() != nil{
+                    AVInstallation.currentInstallation().setObject(AVUser.currentUser().objectId, forKey: "userId")
+                    AVInstallation.currentInstallation().saveEventually()
+                }
                 me.username = AVUser.currentUser().username
                 me.nickname = AVUser.currentUser().objectForKey("NickName") as? String
                 var avartarFile = AVUser.currentUser().objectForKey("Avartar") as? AVFile
