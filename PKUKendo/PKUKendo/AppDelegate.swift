@@ -56,12 +56,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             me.nickname = AVUser.currentUser().objectForKey("NickName") as? String
             var avartarFile = AVUser.currentUser().objectForKey("Avartar") as? AVFile
             if avartarFile != nil{
-                avartarFile?.getDataInBackgroundWithBlock(){
-                    (imgData:NSData!, error:NSError!) -> Void in
-                    if(error == nil){
-                        me.avartar = UIImage(data: imgData)
-                    }
+                var imgData = avartarFile?.getData()
+                if imgData != nil {
+                    me.avartar = UIImage(data: imgData!)
                 }
+//                avartarFile?.getDataInBackgroundWithBlock(){
+//                    (imgData:NSData!, error:NSError!) -> Void in
+//                    if(error == nil){
+//                        me.avartar = UIImage(data: imgData)
+//                    }
+//                }
             }
             me.password = AVUser.currentUser().password
             me.gender = AVUser.currentUser().objectForKey("gender") as? String

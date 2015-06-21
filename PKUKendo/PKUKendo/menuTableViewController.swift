@@ -47,6 +47,12 @@ class menuTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.tabBarItem.image = UIImage(named: "123")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+//        self.tabBarItem.selectedImage = UIImage(named: "123")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        
+        //self.tabBarController?.tabBar.translucent = false
+        //self.tabBarController?.tabBar.tintColor = UIColor(white: 1, alpha: 0)
+        //self.tabBarController?.tabBar.barTintColor = UIColor(white: 1, alpha: 0)
         //self.navigationController?.setNavigationBarHidden(true, animated: false)
         //UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Slide)
         usrPhoto.imageView!.layer.cornerRadius = photoSize / 2

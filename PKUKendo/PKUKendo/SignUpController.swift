@@ -26,6 +26,7 @@ class SignUpController: UIViewController {
     
     @IBOutlet var gender: UISegmentedControl!
     
+    var user:AVUser = AVUser()
     
     
     override func viewDidLoad() {
@@ -42,6 +43,10 @@ class SignUpController: UIViewController {
         return UIStatusBarStyle.LightContent
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        (segue.destinationViewController as! VerifyMobileViewController).user = user
+    }
+    
     @IBAction func SignUp(sender: UIButton) {
         
         if userNameField.text == "" || nickNameField.text == "" || setPasswordField.text == "" || ensurePasswordField.text == "" {
@@ -54,7 +59,7 @@ class SignUpController: UIViewController {
             return
         }
         
-        var user = AVUser()
+        //var user = AVUser()
         user.username = userNameField.text
         user.password = setPasswordField.text
         user.setObject(nickNameField.text, forKey: "NickName")
@@ -64,49 +69,53 @@ class SignUpController: UIViewController {
         else {
             user.setObject("女", forKey: "gender")
         }
+        //user.setObject(gender, forKey: <#String!#>)
+        self.performSegueWithIdentifier("next", sender: self)
        // user.setObject(gender, forKey: <#String!#>)
-        KVNProgress.showWithStatus(" ")
-        user.signUpInBackgroundWithBlock(){
-            (success:Bool, error:NSError!) -> Void in
-            if success {
-               // AVUser.logOut()
-                AVUser.logInWithUsernameInBackground(self.userNameField.text, password: self.setPasswordField.text){
-                    (user :AVUser!, error :NSError!) -> Void in
-                    if user != nil {
-                        KVNProgress.dismiss()
-                        KVNProgress.showSuccessWithStatus("注册成功")
-                        me.username = AVUser.currentUser().username
-                        me.nickname = AVUser.currentUser().objectForKey("NickName") as? String
-                        var avartarFile = AVUser.currentUser().objectForKey("Avartar") as? AVFile
-                        if avartarFile != nil{
-                            //   println("asdfasdfasdf")
-                            avartarFile?.getDataInBackgroundWithBlock(){
-                                (imgData:NSData!, error:NSError!) -> Void in
-                                if(error == nil){
-                                    me.avartar = UIImage(data: imgData)
-                                    //                                self.usrPhoto.imageView!.image = UIImage(data: imgData)
-                                    // println("asdfasdfasdf")
-                                    //self.tableView.reloadData()
-                                }
-                            }
-                        }
-                        me.password = AVUser.currentUser().password
-                        me.gender = AVUser.currentUser().objectForKey("gender") as? String
-                        me.email = AVUser.currentUser().objectForKey("email") as? String
-                        self.performSegueWithIdentifier("signup", sender: nil)
-                    }
-                    else{
-                        KVNProgress.dismiss()
-                        KVNProgress.showErrorWithStatus("注册失败")
-                    }
-                }
-                //self.navigationController?.popViewControllerAnimated(true)
-            }
-            else {
-                KVNProgress.dismiss()
-                KVNProgress.showErrorWithStatus("注册失败")
-            }
-        }
+//        KVNProgress.showWithStatus(" ")
+//        user.signUpInBackgroundWithBlock(){
+//            (success:Bool, error:NSError!) -> Void in
+//            if success {
+//               // AVUser.logOut()
+//                AVUser.logInWithUsernameInBackground(self.userNameField.text, password: self.setPasswordField.text){
+//                    (user :AVUser!, error :NSError!) -> Void in
+//                    if user != nil {
+//                        KVNProgress.dismiss()
+//                        KVNProgress.showSuccessWithStatus("注册成功")
+//                        me.username = AVUser.currentUser().username
+//                        me.nickname = AVUser.currentUser().objectForKey("NickName") as? String
+//                        var avartarFile = AVUser.currentUser().objectForKey("Avartar") as? AVFile
+//                        if avartarFile != nil{
+//                            //   println("asdfasdfasdf")
+//                            avartarFile?.getDataInBackgroundWithBlock(){
+//                                (imgData:NSData!, error:NSError!) -> Void in
+//                                if(error == nil){
+//                                    me.avartar = UIImage(data: imgData)
+//                                    //                                self.usrPhoto.imageView!.image = UIImage(data: imgData)
+//                                    // println("asdfasdfasdf")
+//                                    //self.tableView.reloadData()
+//                                }
+//                            }
+//                        } else {
+//                            me.avartar = UIImage(named: "1")
+//                        }
+//                        me.password = AVUser.currentUser().password
+//                        me.gender = AVUser.currentUser().objectForKey("gender") as? String
+//                        me.email = AVUser.currentUser().objectForKey("email") as? String
+//                        self.performSegueWithIdentifier("signup", sender: nil)
+//                    }
+//                    else{
+//                        KVNProgress.dismiss()
+//                        KVNProgress.showErrorWithStatus("注册失败")
+//                    }
+//                }
+//                //self.navigationController?.popViewControllerAnimated(true)
+//            }
+//            else {
+//                KVNProgress.dismiss()
+//                KVNProgress.showErrorWithStatus("注册失败")
+//            }
+//        }
         
         
         
