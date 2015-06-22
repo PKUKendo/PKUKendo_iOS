@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticlePostViewController: UIViewController {
+class ArticlePostViewController: UIViewController ,UITextViewDelegate{
     
     @IBOutlet weak var titleField: UITextField!
     
@@ -39,8 +39,25 @@ class ArticlePostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        contentView.text = "点击编辑内容"
+        contentView.textColor = UIColor.lightGrayColor()
+        
 
         // Do any additional setup after loading the view.
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if contentView.textColor == UIColor.lightGrayColor() {
+            contentView.text = ""
+            contentView.textColor = UIColor.blackColor()
+        }
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        if contentView.text.isEmpty {
+            contentView.text = "点击编辑内容"
+            contentView.textColor = UIColor.lightGrayColor()
+        }
     }
 
     override func didReceiveMemoryWarning() {

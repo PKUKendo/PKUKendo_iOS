@@ -14,12 +14,13 @@ class ArticleListController: UITableViewController {
     var noticeList:[Notice] = []
     
     
-    @IBOutlet weak var addButton: UIBarButtonItem!
+    var addButton:UIBarButtonItem!
+        //@IBOutlet weak var addButton: UIBarButtonItem!
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
 
     
-    @IBAction func showActionSheet(sender: UIBarButtonItem) {
+    func showActionSheet(sender: UIBarButtonItem) {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let shareLinkAction = UIAlertAction(title: "发分享", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
@@ -66,6 +67,9 @@ class ArticleListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "showActionSheet:")
+        self.navigationItem.rightBarButtonItem = addButton
+        
         
         
         segmentControl.multipleTouchEnabled = false
@@ -104,11 +108,13 @@ class ArticleListController: UITableViewController {
         switch sender.selectedSegmentIndex{
         case 0:
             self.tableView.reloadData()
+            self.navigationItem.rightBarButtonItem = addButton
             self.tableView.header.beginRefreshing()
-            self.addButton.enabled = true
+           // self.addButton.enabled = true
             break
         case 1:
-            self.addButton.enabled = false
+          //  self.addButton.enabled = false
+            self.navigationItem.rightBarButtonItem = nil
             self.tableView.reloadData()
             self.tableView.header.beginRefreshing()
             break
@@ -268,9 +274,9 @@ class ArticleListController: UITableViewController {
                         self.articleList.append(articleItem)
                     }
                     self.tableView.reloadData()
-                    self.tableView.header.endRefreshing()
+                    self.tableView.footer.endRefreshing()
                 } else {
-                    self.tableView.header.endRefreshing()
+                    self.tableView.footer.endRefreshing()
                 }
             }
             break
@@ -297,18 +303,18 @@ class ArticleListController: UITableViewController {
                         self.noticeList.append(noticeItem)
                     }
                     self.tableView.reloadData()
-                    self.tableView.header.endRefreshing()
+                    self.tableView.footer.endRefreshing()
                 } else {
-                    self.tableView.header.endRefreshing()
+                    self.tableView.footer.endRefreshing()
                 }
             }
             break
         default:
-            self.tableView.header.endRefreshing()
+            self.tableView.footer.endRefreshing()
             break
         }
 
-        self.tableView.footer.endRefreshing()
+      
     }
         
     

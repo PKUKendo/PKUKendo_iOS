@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommentEditController: UIViewController {
+class CommentEditController: UIViewController ,UITextViewDelegate{
     
     var articleId:String!
     var is_article:Bool!
@@ -62,8 +62,25 @@ class CommentEditController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        textView.textColor = UIColor.lightGrayColor()
+        textView.text = "点击此处编辑"
 
         // Do any additional setup after loading the view.
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if textView.textColor == UIColor.lightGrayColor() {
+            textView.text = nil
+            textView.textColor = UIColor.blackColor()
+        }
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "点击此处编辑"
+            textView.textColor = UIColor.lightGrayColor()
+        }
     }
 
     override func didReceiveMemoryWarning() {

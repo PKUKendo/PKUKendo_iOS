@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3133D4461B3846790008D84F /* SelfArticleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3133D4451B3846790008D84F /* SelfArticleListController.swift */; };
 		31D28EF71B2EE5550085D9E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D28EF61B2EE5550085D9E3 /* AppDelegate.swift */; };
 		31D28EFE1B2EE5550085D9E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31D28EFC1B2EE5550085D9E3 /* Main.storyboard */; };
 		31D28F001B2EE5550085D9E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D28EFF1B2EE5550085D9E3 /* Images.xcassets */; };
@@ -95,6 +96,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3133D4451B3846790008D84F /* SelfArticleListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfArticleListController.swift; sourceTree = "<group>"; };
 		31D28EF11B2EE5550085D9E3 /* PKUKendo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PKUKendo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31D28EF51B2EE5550085D9E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31D28EF61B2EE5550085D9E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				31D28FD31B358C910085D9E3 /* TabBarViewController.swift */,
 				31D28FD91B3595440085D9E3 /* VerifyMobileViewController.swift */,
 				31D28FDD1B35BF970085D9E3 /* EventListViewController.swift */,
+				3133D4451B3846790008D84F /* SelfArticleListController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				31D28EF71B2EE5550085D9E3 /* AppDelegate.swift in Sources */,
 				31D28FD41B358C910085D9E3 /* TabBarViewController.swift in Sources */,
 				31D28FB71B31E8C70085D9E3 /* MJRefreshStateHeader.m in Sources */,
+				3133D4461B3846790008D84F /* SelfArticleListController.swift in Sources */,
 				31D28FB41B31E8C70085D9E3 /* MJRefreshBackStateFooter.m in Sources */,
 				31D28FB91B31E8C70085D9E3 /* MJRefreshConst.m in Sources */,
 				31D28FDA1B3595440085D9E3 /* VerifyMobileViewController.swift in Sources */,
