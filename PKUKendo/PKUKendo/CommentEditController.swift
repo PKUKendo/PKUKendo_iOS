@@ -43,7 +43,7 @@ class CommentEditController: UIViewController {
                     }
                     KVNProgress.dismiss()
                     KVNProgress.showSuccessWithStatus("发表成功")
-                    if self.is_article == true{
+                    if self.is_article == true && self.userId! != AVUser.currentUser().objectId{
                         var pushQ = AVInstallation.query()
                         pushQ.whereKey("userId", equalTo: self.userId!)
                         var push = AVPush()

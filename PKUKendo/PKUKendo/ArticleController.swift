@@ -105,12 +105,17 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
                     likeObj.setObject(self.article!.id, forKey: "article")
                     likeObj.saveEventually()
                     
-                    var pushQ = AVInstallation.query()
-                    pushQ.whereKey("userId", equalTo: self.article!.userId)
-                    var push = AVPush()
-                    push.setQuery(pushQ)
-                    push.setMessage("您的文章\(self.article!.title)收到一条点赞")
-                    push.sendPushInBackground()
+                    if self.article!.userId != AVUser.currentUser().objectId {
+                    
+                        var pushQ = AVInstallation.query()
+                        pushQ.whereKey("userId", equalTo: self.article!.userId)
+                        var push = AVPush()
+                        
+                        
+                        push.setQuery(pushQ)
+                        push.setMessage("您的文章\(self.article!.title)收到一条点赞")
+                        push.sendPushInBackground()
+                    }
                     
                     if err == nil {
                         self.article!.likeNum! += 1

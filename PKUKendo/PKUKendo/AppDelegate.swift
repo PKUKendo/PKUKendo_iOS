@@ -22,30 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AVOSCloud.setApplicationId("ql84x2woif2u3xk7p3qoska4i558v3ornikfkfga1l3ad59n", clientKey: "frzrwer3k3demoxounucm0ubfqzlvongad1h30avewweycd9")
         AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
+        AVPush.setProductionMode(false)
+        
         application.applicationIconBadgeNumber = 0
         
-//        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Badge | UIUserNotificationType.Alert |
-//            UIUserNotificationType.Sound, categories: nil))
-//        application.registerForRemoteNotifications()
-        
-        
-//        ShareSDK.registerApp("7da56fc76f5e")
-//        ShareSDK.connectWeChatWithAppId("wxc9ddc67127da6ee5", wechatCls: WXApi.self)
-        
-//        if let launchOpt = launchOptions {
-//            var notificationPayLoad:NSDictionary = launchOpt[UIApplicationLaunchOptionsRemoteNotificationKey] as! NSDictionary
-//            //KVNProgress.showErrorWithStatus("输出\(notificationPayLoad)输出")
-//            println("输出\(notificationPayLoad)输出")
-//            var message = MessageItem()
-//            var textDir:NSDictionary = notificationPayLoad.objectForKey("aps")! as! NSDictionary
-//            var text:String = textDir.objectForKey("alert")! as! String
-//            message.messageText = text
-//            message.userName = notificationPayLoad.objectForKey("user")! as! String
-//            message.userPhoto = UIImage(named: "usrwalker")
-//            messageList.append(message)
-//            self.window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
-//            (self.window?.rootViewController as! UITabBarController).selectedIndex = 1
-//        }
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Badge | UIUserNotificationType.Alert |
             UIUserNotificationType.Sound, categories: nil))
         application.registerForRemoteNotifications()

@@ -58,6 +58,11 @@ class ArticleListController: UITableViewController {
             
         }
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -93,9 +93,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="3Gc-bi-7Po" kind="relationship" relationship="viewControllers" id="oxN-Jn-Tol"/>
-                        <segue destination="QH1-dz-MRV" kind="relationship" relationship="viewControllers" id="cP7-eD-VIV"/>
                         <segue destination="WDg-ob-4gT" kind="relationship" relationship="viewControllers" id="B4T-4w-z8s"/>
                         <segue destination="0SK-bn-v3N" kind="relationship" relationship="viewControllers" id="tBe-I1-MBO"/>
+                        <segue destination="QH1-dz-MRV" kind="relationship" relationship="viewControllers" id="cP7-eD-VIV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGX-0h-9cW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -781,7 +781,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="100" id="Rzw-Sq-Cr7">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="100" id="Rzw-Sq-Cr7">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rzw-Sq-Cr7" id="wCM-tL-mDX">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1260,18 +1260,34 @@
         <scene sceneID="c0m-HQ-CUT">
             <objects>
                 <tableViewController id="IhC-qU-r1K" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RNg-yD-0WO">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RNg-yD-0WO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LOJ-1i-bhc">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LOJ-1i-bhc" id="oLz-Zg-LU2">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <sections>
+                            <tableViewSection id="h28-S0-qEH">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LOJ-1i-bhc">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LOJ-1i-bhc" id="oLz-Zg-LU2">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dVU-XA-JIr">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dVU-XA-JIr" id="KLH-RQ-20q">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Omc-Ws-PiR">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Omc-Ws-PiR" id="3I2-67-t5f">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="IhC-qU-r1K" id="DgK-8k-NAL"/>
                             <outlet property="delegate" destination="IhC-qU-r1K" id="LdP-ea-X5W"/>
@@ -2242,11 +2258,11 @@
             </objects>
             <point key="canvasLocation" x="-3395" y="478"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--日志-->
         <scene sceneID="g5v-Ar-4vi">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Gc-bi-7Po" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="ebS-Yt-I6X"/>
+                    <tabBarItem key="tabBarItem" title="日志" image="jian" id="ebS-Yt-I6X"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Frl-uK-ccQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2375,6 +2391,7 @@
         <image name="Like Filled-100" width="100" height="100"/>
         <image name="Like-100" width="100" height="100"/>
         <image name="User Male4-50" width="60" height="62"/>
+        <image name="jian" width="75" height="75"/>
         <image name="kendobck" width="1008" height="567"/>
         <image name="password_icon" width="21" height="31"/>
         <image name="red-blue" width="1920" height="1080"/>
