@@ -16,6 +16,9 @@ class SignUpController: UIViewController {
     @IBOutlet weak var nickNameField: UITextField!
     
     
+    @IBOutlet weak var codeField: UITextField!
+    
+    
     @IBOutlet weak var setPasswordField: UITextField!
     
     
@@ -69,8 +72,28 @@ class SignUpController: UIViewController {
         else {
             user.setObject("女", forKey: "gender")
         }
+        
+        if codeField.text != "" {
+            KVNProgress.show()
+            var query = AVQuery(className: "Code")
+            query.whereKey("code", equalTo: codeField.text)
+            query.findObjectsInBackgroundWithBlock(){
+                (result:[AnyObject]!, error:NSError!) -> Void in
+                if error == nil && result.count > 0{
+                    KVNProgress.dismiss()
+                    self.performSegueWithIdentifier("next", sender: self)
+                }else {
+                    KVNProgress.dismiss()
+                    KVNProgress.showErrorWithStatus("邀请码错误")
+                }
+            }
+        } else {
+            KVNProgress.showErrorWithStatus("请输入邀请码")
+            return
+        }
+        
         //user.setObject(gender, forKey: <#String!#>)
-        self.performSegueWithIdentifier("next", sender: self)
+       // self.performSegueWithIdentifier("next", sender: self)
        // user.setObject(gender, forKey: <#String!#>)
 //        KVNProgress.showWithStatus(" ")
 //        user.signUpInBackgroundWithBlock(){

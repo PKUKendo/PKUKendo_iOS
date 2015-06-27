@@ -18,7 +18,7 @@ public class Contact{
     var phone:String! = ""
     var weixin:String! = ""
     var gender:String! = ""
-    var avartar:UIImage! = UIImage(named: "123")
+    var avartar:UIImage! = UIImage(named: "男生默认头像")
     var yuanxi:String! = ""
     var nianji:String! = ""
     var sort:Int!

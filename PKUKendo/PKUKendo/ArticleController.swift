@@ -83,7 +83,7 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
             } else {
                 (segue.destinationViewController as! CommentEditController).articleId = notice!.id
                 (segue.destinationViewController as! CommentEditController).is_article = is_article
-                (segue.destinationViewController as! CommentEditController).articleTitle = article!.title
+                (segue.destinationViewController as! CommentEditController).articleTitle = notice!.title
             }
         }
     }
@@ -174,9 +174,9 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
         super.viewDidLoad()
         
         var footer = MJRefreshBackGifFooter(refreshingTarget: self, refreshingAction: "footerRefresh:")
-        footer.setImages([UIImage(named: "123")!], forState: MJRefreshStatePulling)
-        footer.setImages([UIImage(named: "123")!], forState: MJRefreshStateRefreshing)
-        footer.setImages([UIImage(named: "123")!], forState: MJRefreshStateIdle)
+        footer.setImages([UIImage(named: "tiao1")!,UIImage(named: "tiao2")!],duration: 0.4, forState: MJRefreshStatePulling)
+        footer.setImages([UIImage(named: "tiao1")!,UIImage(named: "tiao2")!],duration: 0.4, forState: MJRefreshStateRefreshing)
+        footer.setImages([UIImage(named: "tiao1")!,UIImage(named: "tiao2")!],duration: 0.4, forState: MJRefreshStateIdle)
         //footer.lastUpdatedTimeLabel.hidden = true
         footer.stateLabel.hidden = true
         
@@ -262,6 +262,7 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
                     var userId = user.objectId
                     var userquery = AVUser.query()
                     user = userquery.getObjectWithId(userId) as! AVUser
+                    var userGender = user.objectForKey("gender") as! String
                     commentItem.username = user.objectForKey("NickName") as! String
                     var avartarFile = user.objectForKey("Avartar") as? AVFile
                     if avartarFile != nil{
@@ -269,10 +270,19 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
                         if imgData != nil{
                             commentItem.avartar = UIImage(data: imgData!)
                         } else {
-                            commentItem.avartar = UIImage(named: "123")
+                            if userGender == "男"{
+                                commentItem.avartar = UIImage(named: "男生默认头像")
+                            }else {
+                                commentItem.avartar = UIImage(named: "女生默认头像")
+                            }
+                           
                         }
                     } else {
-                        commentItem.avartar = UIImage(named: "123")
+                        if userGender == "男"{
+                            commentItem.avartar = UIImage(named: "男生默认头像")
+                        }else {
+                            commentItem.avartar = UIImage(named: "女生默认头像")
+                        }
                     }
                     self.commentList.append(commentItem)
                 }
@@ -310,6 +320,7 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
                     var userId = user.objectId
                     var userquery = AVUser.query()
                     user = userquery.getObjectWithId(userId) as! AVUser
+                    var userGender = user.objectForKey("gender") as! String
                     commentItem.username = user.objectForKey("NickName") as! String
                     var avartarFile = user.objectForKey("Avartar") as? AVFile
                     if avartarFile != nil{
@@ -317,10 +328,18 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
                         if imgData != nil{
                             commentItem.avartar = UIImage(data: imgData!)
                         } else {
-                            commentItem.avartar = UIImage(named: "123")
+                            if userGender == "男"{
+                                commentItem.avartar = UIImage(named: "男生默认头像")
+                            }else {
+                                commentItem.avartar = UIImage(named: "女生默认头像")
+                            }
                         }
                     } else {
-                        commentItem.avartar = UIImage(named: "123")
+                        if userGender == "男"{
+                            commentItem.avartar = UIImage(named: "男生默认头像")
+                        }else {
+                            commentItem.avartar = UIImage(named: "女生默认头像")
+                        }
                     }
                     self.commentList.append(commentItem)
                 }

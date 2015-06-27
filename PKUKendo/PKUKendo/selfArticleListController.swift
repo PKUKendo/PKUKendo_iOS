@@ -33,17 +33,17 @@ class SelfArticleListController: UITableViewController {
         
         var header = MJRefreshGifHeader(refreshingTarget: self, refreshingAction: "headerRefresh:")
         
-        header.setImages([UIImage(named: "123")!], forState: MJRefreshStatePulling)
-        header.setImages([UIImage(named: "123")!], forState: MJRefreshStateRefreshing)
-        header.setImages([UIImage(named: "123")!], forState: MJRefreshStateIdle)
+        header.setImages([UIImage(named: "tiao1")!,UIImage(named: "tiao2")!],duration: 0.4, forState: MJRefreshStatePulling)
+        header.setImages([UIImage(named: "tiao1")!,UIImage(named: "tiao2")!],duration: 0.4, forState: MJRefreshStateRefreshing)
+        header.setImages([UIImage(named: "tiao1")!,UIImage(named: "tiao2")!],duration: 0.4, forState: MJRefreshStateIdle)
         header.lastUpdatedTimeLabel.hidden = true
         header.stateLabel.hidden = true
         tableView.header = header
         
         var footer = MJRefreshBackGifFooter(refreshingTarget: self, refreshingAction: "footerRefresh:")
-        footer.setImages([UIImage(named: "123")!], forState: MJRefreshStatePulling)
-        footer.setImages([UIImage(named: "123")!], forState: MJRefreshStateRefreshing)
-        footer.setImages([UIImage(named: "123")!], forState: MJRefreshStateIdle)
+        footer.setImages([UIImage(named: "tiao1")!,UIImage(named: "tiao2")!],duration: 0.4, forState: MJRefreshStatePulling)
+        footer.setImages([UIImage(named: "tiao1")!,UIImage(named: "tiao2")!],duration: 0.4, forState: MJRefreshStateRefreshing)
+        footer.setImages([UIImage(named: "tiao1")!,UIImage(named: "tiao2")!],duration: 0.4, forState: MJRefreshStateIdle)
         //footer.lastUpdatedTimeLabel.hidden = true
         footer.stateLabel.hidden = true
         
@@ -87,6 +87,7 @@ class SelfArticleListController: UITableViewController {
                     articleItem.userId = userId
                     var userQuery = AVUser.query()
                     user = userQuery.getObjectWithId(userId) as! AVUser
+                    var userGender = user.objectForKey("gender") as! String
                     articleItem.userName = user.objectForKey("NickName") as! String
                     var avartarFile = user.objectForKey("Avartar") as? AVFile
                     if avartarFile != nil{
@@ -96,7 +97,11 @@ class SelfArticleListController: UITableViewController {
                                 articleItem.avartar = img
                                 self.tableView.reloadData()
                             }else{
-                                articleItem.avartar = UIImage(named: "123")
+                                if userGender == "男"{
+                                    articleItem.avartar = UIImage(named: "男生默认头像")
+                                }else {
+                                    articleItem.avartar = UIImage(named: "女生默认头像")
+                                }
                             }
                             
                         }
@@ -107,7 +112,11 @@ class SelfArticleListController: UITableViewController {
                         //                                articleItem.avartar = UIImage(named: "123")
                         //                            }
                     } else {
-                        articleItem.avartar = UIImage(named: "123")
+                        if userGender == "男"{
+                            articleItem.avartar = UIImage(named: "男生默认头像")
+                        }else {
+                            articleItem.avartar = UIImage(named: "女生默认头像")
+                        }
                     }
                     
                     self.articleList.append(articleItem)
@@ -150,6 +159,7 @@ class SelfArticleListController: UITableViewController {
                     var userQuery = AVUser.query()
                     user = userQuery.getObjectWithId(userId) as! AVUser
                     articleItem.userName = user.objectForKey("NickName") as! String
+                    var userGender = user.objectForKey("gender") as! String
                     var avartarFile = user.objectForKey("Avartar") as? AVFile
                     if avartarFile != nil{
                         avartarFile?.getThumbnail(true, width: 64, height: 64){
@@ -158,7 +168,11 @@ class SelfArticleListController: UITableViewController {
                                 articleItem.avartar = img
                                 self.tableView.reloadData()
                             }else{
-                                articleItem.avartar = UIImage(named: "123")
+                                if userGender == "男"{
+                                    articleItem.avartar = UIImage(named: "男生默认头像")
+                                }else {
+                                    articleItem.avartar = UIImage(named: "女生默认头像")
+                                }
                             }
                             
                         }
@@ -169,7 +183,11 @@ class SelfArticleListController: UITableViewController {
                         //                                articleItem.avartar = UIImage(named: "123")
                         //                            }
                     } else {
-                        articleItem.avartar = UIImage(named: "123")
+                        if userGender == "男"{
+                            articleItem.avartar = UIImage(named: "男生默认头像")
+                        }else {
+                            articleItem.avartar = UIImage(named: "女生默认头像")
+                        }
                     }
                     
                     self.articleList.append(articleItem)

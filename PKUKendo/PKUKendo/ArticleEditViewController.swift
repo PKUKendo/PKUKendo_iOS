@@ -59,6 +59,8 @@ class ArticleEditViewController: UIViewController {
                 }
             }
             
+        }else{
+            KVNProgress.showErrorWithStatus("标题或内容不能为空")
         }
     }
     

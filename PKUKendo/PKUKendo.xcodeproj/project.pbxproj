@@ -21,7 +21,7 @@
 		31D28F3D1B2F10490085D9E3 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D28F201B2F10490085D9E3 /* LoginController.swift */; };
 		31D28F3E1B2F10490085D9E3 /* menuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D28F211B2F10490085D9E3 /* menuTableViewController.swift */; };
 		31D28F451B2F10490085D9E3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D28F291B2F10490085D9E3 /* User.swift */; };
-		31D28F461B2F10490085D9E3 /* ModifyEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D28F2A1B2F10490085D9E3 /* ModifyEmailController.swift */; };
+		31D28F461B2F10490085D9E3 /* ModifyWeixinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D28F2A1B2F10490085D9E3 /* ModifyWeixinController.swift */; };
 		31D28F471B2F10490085D9E3 /* ModifyGenderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D28F2B1B2F10490085D9E3 /* ModifyGenderController.swift */; };
 		31D28F481B2F10490085D9E3 /* ModifyNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D28F2C1B2F10490085D9E3 /* ModifyNameController.swift */; };
 		31D28F491B2F10490085D9E3 /* ModifyPSwordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D28F2D1B2F10490085D9E3 /* ModifyPSwordController.swift */; };
@@ -115,7 +115,7 @@
 		31D28F201B2F10490085D9E3 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		31D28F211B2F10490085D9E3 /* menuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuTableViewController.swift; sourceTree = "<group>"; };
 		31D28F291B2F10490085D9E3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		31D28F2A1B2F10490085D9E3 /* ModifyEmailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyEmailController.swift; sourceTree = "<group>"; };
+		31D28F2A1B2F10490085D9E3 /* ModifyWeixinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyWeixinController.swift; sourceTree = "<group>"; };
 		31D28F2B1B2F10490085D9E3 /* ModifyGenderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyGenderController.swift; sourceTree = "<group>"; };
 		31D28F2C1B2F10490085D9E3 /* ModifyNameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyNameController.swift; sourceTree = "<group>"; };
 		31D28F2D1B2F10490085D9E3 /* ModifyPSwordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyPSwordController.swift; sourceTree = "<group>"; };
@@ -339,7 +339,7 @@
 				31D28F1B1B2F10490085D9E3 /* detailInfoController.swift */,
 				31D28F211B2F10490085D9E3 /* menuTableViewController.swift */,
 				31D28F201B2F10490085D9E3 /* LoginController.swift */,
-				31D28F2A1B2F10490085D9E3 /* ModifyEmailController.swift */,
+				31D28F2A1B2F10490085D9E3 /* ModifyWeixinController.swift */,
 				31D28F2B1B2F10490085D9E3 /* ModifyGenderController.swift */,
 				31D28F2D1B2F10490085D9E3 /* ModifyPSwordController.swift */,
 				31D28F2C1B2F10490085D9E3 /* ModifyNameController.swift */,
@@ -543,6 +543,7 @@
 		31D28EE91B2EE5550085D9E3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Karma Guo";
 				TargetAttributes = {
@@ -633,7 +634,7 @@
 				31D28F451B2F10490085D9E3 /* User.swift in Sources */,
 				31D28FCC1B34E8B70085D9E3 /* ArticleEditViewController.swift in Sources */,
 				31D28FAB1B31E8C70085D9E3 /* MJRefreshBackFooter.m in Sources */,
-				31D28F461B2F10490085D9E3 /* ModifyEmailController.swift in Sources */,
+				31D28F461B2F10490085D9E3 /* ModifyWeixinController.swift in Sources */,
 				31D28FBC1B31E8C70085D9E3 /* UIView+MJExtension.m in Sources */,
 				31D28F751B3109D90085D9E3 /* ArticleContentCell.swift in Sources */,
 				31D28F711B30EB430085D9E3 /* ArticleListController.swift in Sources */,
@@ -798,6 +799,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PKUKendo/PKUKendo-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -819,6 +821,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PKUKendo/PKUKendo-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -33,6 +33,8 @@ class ShareLinkController: UIViewController {
                     KVNProgress.showErrorWithStatus("网络错误")
                 }
             }
+        }else{
+            KVNProgress.showErrorWithStatus("标题或链接不能为空")
         }
     }
     

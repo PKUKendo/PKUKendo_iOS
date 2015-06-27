@@ -42,7 +42,7 @@ class CommentEditController: UIViewController ,UITextViewDelegate{
                         article.save()
                     }
                     KVNProgress.dismiss()
-                    KVNProgress.showSuccessWithStatus("发表成功")
+                 //   KVNProgress.showSuccessWithStatus("发表成功")
                     if self.is_article == true && self.userId! != AVUser.currentUser().objectId{
                         var pushQ = AVInstallation.query()
                         pushQ.whereKey("userId", equalTo: self.userId!)
@@ -57,6 +57,8 @@ class CommentEditController: UIViewController ,UITextViewDelegate{
                     KVNProgress.showErrorWithStatus("网络错误")
                 }
             }
+        }else{
+            KVNProgress.showErrorWithStatus("评论内容不能为空")
         }
     }
 

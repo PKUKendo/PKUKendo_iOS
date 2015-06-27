@@ -52,6 +52,11 @@ class ContactsListViewController: UITableViewController {
                     }
                     if (result as! AVObject).objectForKey("gender") != nil{
                         contactItem.gender = (result as! AVObject).objectForKey("gender") as! String
+                        if contactItem.gender == "男"{
+                            contactItem.avartar = UIImage(named: "男生默认头像")
+                        }else if contactItem.gender == "女"{
+                            contactItem.avartar = UIImage(named: "女生默认头像")
+                        }
                     }
                     
                     contactItem.group = (result as! AVObject).objectForKey("group") as! String

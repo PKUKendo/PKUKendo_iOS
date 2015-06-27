@@ -29,7 +29,7 @@ class LoginController: UIViewController {
             KVNProgress.showErrorWithStatus("用户名/密码不能为空")
             return
         }
-        KVNProgress.showWithStatus(" ")
+        KVNProgress.show()
         AVUser.logInWithUsernameInBackground(usernameField.text, password: passwordField.text){
             (user :AVUser!, error :NSError!) -> Void in
             if error == nil {
@@ -52,7 +52,7 @@ class LoginController: UIViewController {
                         me.avartar = UIImage(data: imgData!)
                         me.password = AVUser.currentUser().password
                         me.gender = AVUser.currentUser().objectForKey("gender") as? String
-                        me.email = AVUser.currentUser().objectForKey("email") as? String
+                        me.weixin = AVUser.currentUser().objectForKey("weixin") as? String
                         self.performSegueWithIdentifier("login", sender: nil)
                     }
                     else {
@@ -81,10 +81,15 @@ class LoginController: UIViewController {
 //                    }
                 }
                 else {
-                    me.avartar = UIImage(named: "1")
+                    //me.avartar = UIImage(named: "1")
                     me.password = AVUser.currentUser().password
                     me.gender = AVUser.currentUser().objectForKey("gender") as? String
-                    me.email = AVUser.currentUser().objectForKey("email") as? String
+                    if me.gender == "男"{
+                        me.avartar = UIImage(named: "男生默认头像")
+                    }else {
+                        me.avartar = UIImage(named: "女生默认头像")
+                    }
+                    me.weixin = AVUser.currentUser().objectForKey("weixin") as? String
                     self.performSegueWithIdentifier("login", sender: nil)
                 }
             }

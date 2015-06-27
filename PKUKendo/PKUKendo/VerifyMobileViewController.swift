@@ -15,6 +15,7 @@ class VerifyMobileViewController: UIViewController {
     @IBOutlet weak var codeField: UITextField!
     
     
+    
     @IBOutlet weak var finishButton: UIButton!
     
     
@@ -38,7 +39,12 @@ class VerifyMobileViewController: UIViewController {
                              me.avartar = UIImage(named: "1")
                             me.password = AVUser.currentUser().password
                             me.gender = AVUser.currentUser().objectForKey("gender") as? String
-                            me.email = AVUser.currentUser().objectForKey("email") as? String
+                            if me.gender == "男"{
+                                me.avartar = UIImage(named: "男生默认头像")
+                            }else {
+                                me.avartar = UIImage(named: "女生默认头像")
+                            }
+                            me.weixin = AVUser.currentUser().objectForKey("weixin") as? String
                             self.performSegueWithIdentifier("signup", sender: nil)
                             
                             KVNProgress.dismiss()
@@ -48,54 +54,15 @@ class VerifyMobileViewController: UIViewController {
                             KVNProgress.showErrorWithStatus("网络错误")
                         }
                     }
-                        //            (success:Bool, error:NSError!) -> Void in
-                        //            if success {
-                        //               // AVUser.logOut()
-                        //                AVUser.logInWithUsernameInBackground(self.userNameField.text, password: self.setPasswordField.text){
-                        //                    (user :AVUser!, error :NSError!) -> Void in
-                        //                    if user != nil {
-                        //                        KVNProgress.dismiss()
-                        //                        KVNProgress.showSuccessWithStatus("注册成功")
-                        //                        me.username = AVUser.currentUser().username
-                        //                        me.nickname = AVUser.currentUser().objectForKey("NickName") as? String
-                        //                        var avartarFile = AVUser.currentUser().objectForKey("Avartar") as? AVFile
-                        //                        if avartarFile != nil{
-                        //                            //   println("asdfasdfasdf")
-                        //                            avartarFile?.getDataInBackgroundWithBlock(){
-                        //                                (imgData:NSData!, error:NSError!) -> Void in
-                        //                                if(error == nil){
-                        //                                    me.avartar = UIImage(data: imgData)
-                        //                                    //                                self.usrPhoto.imageView!.image = UIImage(data: imgData)
-                        //                                    // println("asdfasdfasdf")
-                        //                                    //self.tableView.reloadData()
-                        //                                }
-                        //                            }
-                        //                        } else {
-                        //                            me.avartar = UIImage(named: "1")
-                        //                        }
-                        //                        me.password = AVUser.currentUser().password
-                        //                        me.gender = AVUser.currentUser().objectForKey("gender") as? String
-                        //                        me.email = AVUser.currentUser().objectForKey("email") as? String
-                        //                        self.performSegueWithIdentifier("signup", sender: nil)
-                        //                    }
-                        //                    else{
-                        //                        KVNProgress.dismiss()
-                        //                        KVNProgress.showErrorWithStatus("注册失败")
-                        //                    }
-                        //                }
-                        //                //self.navigationController?.popViewControllerAnimated(true)
-                        //            }
-                        //            else {
-                        //                KVNProgress.dismiss()
-                        //                KVNProgress.showErrorWithStatus("注册失败")
-                        //            }
-                        //        }
+                    
 
                 }else {
                     KVNProgress.dismiss()
                     KVNProgress.showErrorWithStatus("验证失败")
                 }
             }
+        }else{
+            KVNProgress.showErrorWithStatus("信息未填写完全")
         }
         
         
@@ -136,6 +103,8 @@ class VerifyMobileViewController: UIViewController {
             //AVUser.verifyMobilePhone(<#code: String!#>, withBlock: <#AVBooleanResultBlock!##(Bool, NSError!) -> Void#>)
             
             
+        }else{
+            KVNProgress.showErrorWithStatus("错误的手机号")
         }
         
     }

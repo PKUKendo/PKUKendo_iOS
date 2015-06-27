@@ -54,20 +54,24 @@ class ModifyNameController: UITableViewController ,UITextFieldDelegate{
     }
     
     @IBAction func SaveUserName() {
-        AVUser.currentUser().setObject(nickNameField.text, forKey: "NickName")
-        KVNProgress.showWithStatus(" ")
-        AVUser.currentUser().saveInBackgroundWithBlock(){
-            (success:Bool, error:NSError!) -> Void in
-            if success {
-                KVNProgress.dismiss()
-                KVNProgress.showSuccessWithStatus("修改成功")
-                me.nickname = self.nickNameField.text
-                self.navigationController?.popViewControllerAnimated(true)
+        if nickNameField.text != ""{
+            AVUser.currentUser().setObject(nickNameField.text, forKey: "NickName")
+            KVNProgress.showWithStatus(" ")
+            AVUser.currentUser().saveInBackgroundWithBlock(){
+                (success:Bool, error:NSError!) -> Void in
+                if success {
+                    KVNProgress.dismiss()
+                    KVNProgress.showSuccessWithStatus("修改成功")
+                    me.nickname = self.nickNameField.text
+                    self.navigationController?.popViewControllerAnimated(true)
+                }
+                else {
+                    KVNProgress.dismiss()
+                    KVNProgress.showErrorWithStatus("修改失败")
+                }
             }
-            else {
-                KVNProgress.dismiss()
-                KVNProgress.showErrorWithStatus("修改失败")
-            }
+        }else {
+            KVNProgress.showErrorWithStatus("用户名不能为空")
         }
         //self.navigationController?.popViewControllerAnimated(true)
     }

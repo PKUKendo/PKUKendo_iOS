@@ -18,6 +18,10 @@ class TabBarViewController: UITabBarController {
         items[3].image = UIImage(named: "manbw")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         items[0].selectedImage = UIImage(named: "jian")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         items[0].image = UIImage(named: "jianbw")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        items[1].selectedImage = UIImage(named: "kote")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        items[1].image = UIImage(named: "kotebw")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        items[2].selectedImage = UIImage(named: "dou")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        items[2].image = UIImage(named: "doubw")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
 //        self.tabBarController?.tabBar.selectedItem?.image = UIImage(named: "123")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
 //        //        self.tabBarController?.tabBarItem.
 //        self.tabBarController?.tabBar.selectedItem?.selectedImage = UIImage(named: "123")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)

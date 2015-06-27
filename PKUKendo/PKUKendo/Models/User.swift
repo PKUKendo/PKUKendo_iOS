@@ -13,11 +13,12 @@ public class User {
    // let ID: Int
    // var portrait: String?
     var username: String = ""
-    var avartar = UIImage(named: "1")
+    var avartar = UIImage(named: "男生默认头像")
     var gender:String?
     var nickname:String?
     var password:String?
-    var email:String?
+    //var email:String?
+    var weixin:String?
     //    var currentNews: Int
     
 //    var newsList = [NewsItem]()

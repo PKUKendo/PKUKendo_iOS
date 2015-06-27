@@ -87,8 +87,16 @@ class ModifyGenderController: UITableViewController {
         AVUser.currentUser().saveInBackgroundWithBlock(){
             (success:Bool, error:NSError!) -> Void in
             if success {
+                me.gender = gender
+                if AVUser.currentUser().objectForKey("Avartar") as? AVFile == nil{
+                    if me.gender == "男"{
+                        me.avartar = UIImage(named: "男生默认头像")
+                    }else {
+                        me.avartar = UIImage(named: "女生默认头像")
+                    }
+                }
                 KVNProgress.dismiss()
-                KVNProgress.showSuccessWithStatus("修改成功")
+               // KVNProgress.showSuccessWithStatus("修改成功")
                 me.gender = gender
                 self.navigationController?.popViewControllerAnimated(true)
             }

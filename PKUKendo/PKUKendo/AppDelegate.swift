@@ -37,11 +37,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else {
             me.username = AVUser.currentUser().username
             me.nickname = AVUser.currentUser().objectForKey("NickName") as? String
+            me.gender = AVUser.currentUser().objectForKey("gender") as? String
             var avartarFile = AVUser.currentUser().objectForKey("Avartar") as? AVFile
             if avartarFile != nil{
                 var imgData = avartarFile?.getData()
                 if imgData != nil {
                     me.avartar = UIImage(data: imgData!)
+                }else {
+                    if me.gender == "男"{
+                        me.avartar = UIImage(named: "男生默认头像")
+                    }else {
+                        me.avartar = UIImage(named: "女生默认头像")
+                    }
                 }
 //                avartarFile?.getDataInBackgroundWithBlock(){
 //                    (imgData:NSData!, error:NSError!) -> Void in
@@ -49,10 +56,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                        me.avartar = UIImage(data: imgData)
 //                    }
 //                }
+            }else {
+                if me.gender == "男"{
+                    me.avartar = UIImage(named: "男生默认头像")
+                }else {
+                    me.avartar = UIImage(named: "女生默认头像")
+                }
             }
             me.password = AVUser.currentUser().password
-            me.gender = AVUser.currentUser().objectForKey("gender") as? String
-            me.email = AVUser.currentUser().objectForKey("email") as? String
+            
+            me.weixin = AVUser.currentUser().objectForKey("weixin") as? String
         }
         
         return true

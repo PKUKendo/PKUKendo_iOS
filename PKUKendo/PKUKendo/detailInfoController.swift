@@ -28,7 +28,7 @@ class detailInfoController: UITableViewController, UIAlertViewDelegate, UIImageP
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.hidden = true
-        
+        Avatar.image = me.avartar
     }
     
     
@@ -80,6 +80,7 @@ class detailInfoController: UITableViewController, UIAlertViewDelegate, UIImageP
                 me.avartar = img
                 KVNProgress.dismiss()
                 KVNProgress.showSuccessWithStatus("上传成功")
+                self.Avatar.image = me.avartar
                 //self.navigationController?.popViewControllerAnimated(true)
             }
             else {
