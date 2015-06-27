@@ -12,6 +12,8 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
     
     var article:Article?
     
+    weak var delegate:ArticleChangeViewControllerDelegate?
+    
     func editFinishWithContent(content: String, AndTitle title: String) {
         article!.content = content
         article!.title = title
@@ -43,6 +45,7 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
                     result.deleteEventually()
                     KVNProgress.dismiss()
                     KVNProgress.showSuccessWithStatus("删除成功")
+                    self.delegate?.articleChangeNeedRefresh()
                     self.navigationController?.popViewControllerAnimated(true)
                 }else {
                     KVNProgress.dismiss()

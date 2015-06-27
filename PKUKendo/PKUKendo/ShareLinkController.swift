@@ -12,6 +12,9 @@ class ShareLinkController: UIViewController {
     
     @IBOutlet weak var titleField: UITextField!
     
+
+    weak var delegate:ArticleChangeViewControllerDelegate?
+    
     @IBOutlet weak var linkField: UITextField!
     
     @IBAction func send(sender: UIBarButtonItem) {
@@ -27,6 +30,7 @@ class ShareLinkController: UIViewController {
                 if success == true{
                     KVNProgress.dismiss()
                     KVNProgress.showSuccessWithStatus("发表成功")
+                    self.delegate?.articleChangeNeedRefresh()
                     self.navigationController?.popViewControllerAnimated(true)
                 } else {
                     KVNProgress.dismiss()

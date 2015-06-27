@@ -12,6 +12,8 @@ class ArticlePostViewController: UIViewController ,UITextViewDelegate{
     
     @IBOutlet weak var titleField: UITextField!
     
+    weak var delegate:ArticleChangeViewControllerDelegate?
+    
     
     @IBOutlet weak var contentView: UITextView!
 
@@ -27,6 +29,7 @@ class ArticlePostViewController: UIViewController ,UITextViewDelegate{
                 if success == true{
                     KVNProgress.dismiss()
                     KVNProgress.showSuccessWithStatus("发表成功")
+                    self.delegate?.articleChangeNeedRefresh()
                     self.navigationController?.popViewControllerAnimated(true)
                 } else {
                     KVNProgress.dismiss()

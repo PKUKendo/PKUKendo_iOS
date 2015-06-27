@@ -8,10 +8,19 @@
 
 import UIKit
 
-class ArticleListController: UITableViewController {
+protocol ArticleChangeViewControllerDelegate:class{
+    func articleChangeNeedRefresh()
+}
+
+class ArticleListController: UITableViewController ,ArticleChangeViewControllerDelegate{
     
     var articleList:[Article] = []
     var noticeList:[Notice] = []
+    func articleChangeNeedRefresh() {
+        self.tableView.header.beginRefreshing()
+    }
+    
+    
     
     
     var addButton:UIBarButtonItem!
@@ -50,13 +59,17 @@ class ArticleListController: UITableViewController {
             if segmentControl.selectedSegmentIndex == 0{
                 (segue.destinationViewController as! ArticleController).is_article = true
                 (segue.destinationViewController as! ArticleController).article = articleList[indexPath!.row]
+                (segue.destinationViewController as! ArticleController).delegate = self
             }else {
                 (segue.destinationViewController as! ArticleController).is_article = false
                 (segue.destinationViewController as! ArticleController).notice = noticeList[indexPath!.row]
+                (segue.destinationViewController as! ArticleController).delegate = self
             }
             //(segue.destinationViewController as! ArticleController).is_article
-        } else{
-            
+        } else if segue.identifier == "postArticle"{
+            (segue.destinationViewController as! ArticlePostViewController).delegate = self
+        } else if segue.identifier == "postShare"{
+            (segue.destinationViewController as! ShareLinkController).delegate = self
         }
     }
     
