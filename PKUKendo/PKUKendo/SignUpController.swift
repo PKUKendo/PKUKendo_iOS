@@ -38,6 +38,25 @@ class SignUpController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+//    override func viewDidAppear(animated: Bool) {
+//        let SignUp = UIAlertController(title: "用户协议", message: "本应用作为北京大学剑道社内部以及剑道爱好者之间的交流平台, 不欢迎任何商业广告和无关话题. 发言者对自己发表的任何言论,信息负责", preferredStyle: UIAlertControllerStyle.Alert)
+//        let shareLinkAction = UIAlertAction(title: "不同意以上协议", style: .Default, handler: {
+//            (alert: UIAlertAction!) -> Void in
+//            self.navigationController?.popViewControllerAnimated(true)
+//        })
+//        let postArticleAction = UIAlertAction(title: "同意以上协议", style: .Default, handler: {
+//            (alert: UIAlertAction!) -> Void in
+//            //self.performSegueWithIdentifier("postArticle", sender: sender)
+//            //self.tableView.header.beginRefreshing()
+//        })
+//        
+//        
+//        
+//        SignUp.addAction(shareLinkAction)
+//        //optionMenu.addAction(shareLinkAction)
+//        SignUp.addAction(postArticleAction)
+//        self.presentViewController(SignUp, animated: true, completion: nil)
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,9 +65,9 @@ class SignUpController: UIViewController {
         return UIStatusBarStyle.LightContent
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        (segue.destinationViewController as! VerifyMobileViewController).user = user
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        (segue.destinationViewController as! VerifyMobileViewController).user = user
+//    }
     
     @IBAction func SignUp(sender: UIButton) {
         
@@ -68,9 +87,10 @@ class SignUpController: UIViewController {
         user.setObject(nickNameField.text, forKey: "NickName")
         if gender.selectedSegmentIndex == 0{
             user.setObject("男", forKey: "gender")
-        }
-        else {
+        }else if gender.selectedSegmentIndex == 1 {
             user.setObject("女", forKey: "gender")
+        }else {
+            user.setObject("保密", forKey: "gender")
         }
         
         if codeField.text != "" {
@@ -80,8 +100,47 @@ class SignUpController: UIViewController {
             query.findObjectsInBackgroundWithBlock(){
                 (result:[AnyObject]!, error:NSError!) -> Void in
                 if error == nil && result.count > 0{
-                    KVNProgress.dismiss()
-                    self.performSegueWithIdentifier("next", sender: self)
+                    //KVNProgress.dismiss()
+                    //self.performSegueWithIdentifier("next", sender: self)
+                    self.user.signUpInBackgroundWithBlock(){
+                        (success:Bool, error:NSError!) -> Void in
+                        if success == true{
+                            AVUser.logInWithUsernameInBackground(self.user.username, password: self.user.password){
+                                (user :AVUser!, error :NSError!) -> Void in
+                                if user != nil {
+                                    AVUser.currentUser().setObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "installation")
+                                    AVUser.currentUser().saveEventually()
+                                    if AVInstallation.currentInstallation() != nil{
+                                        AVInstallation.currentInstallation().setObject(AVUser.currentUser().objectId, forKey: "userId")
+                                        AVInstallation.currentInstallation().saveEventually()
+                                    }
+                                    me.username = AVUser.currentUser().username
+                                    me.nickname = AVUser.currentUser().objectForKey("NickName") as? String
+                                    me.avartar = UIImage(named: "1")
+                                    me.password = AVUser.currentUser().password
+                                    me.gender = AVUser.currentUser().objectForKey("gender") as? String
+                                    if me.gender == "男"{
+                                        me.avartar = UIImage(named: "男生默认头像")
+                                    }else {
+                                        me.avartar = UIImage(named: "女生默认头像")
+                                    }
+                                    me.weixin = AVUser.currentUser().objectForKey("weixin") as? String
+                                    self.performSegueWithIdentifier("signup", sender: nil)
+                                    
+                                    KVNProgress.dismiss()
+                                    KVNProgress.showSuccessWithStatus("注册成功")
+                                }else {
+                                    KVNProgress.dismiss()
+                                    KVNProgress.showErrorWithStatus("网络错误")
+                                }
+                            }
+                            
+                        }else {
+                            //sender.enabled = true
+                            KVNProgress.dismiss()
+                            KVNProgress.showErrorWithStatus("用户名重复或网络错误")
+                        }
+                    }
                 }else {
                     KVNProgress.dismiss()
                     KVNProgress.showErrorWithStatus("邀请码错误")

@@ -19,6 +19,7 @@ class WebViewController: UIViewController {
         println(url)
         if requestURL != nil{
             let request = NSURLRequest(URL: requestURL!)
+            
             webView.loadRequest(request)
         }
         

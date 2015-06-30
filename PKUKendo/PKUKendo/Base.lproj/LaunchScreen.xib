@@ -11,7 +11,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 Karma Guo. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
-                    <rect key="frame" x="20" y="439" width="441" height="21"/>
+                    <rect key="frame" x="20" y="439.5" width="441" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -24,7 +24,7 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="北京大学" translatesAutoresizingMaskIntoConstraints="NO" id="0ws-YM-1wr">
-                    <rect key="frame" x="137" y="48" width="50" height="200"/>
+                    <rect key="frame" x="137" y="40" width="50" height="200"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="E5Z-yE-0iP"/>
                         <constraint firstAttribute="height" constant="200" id="UlY-xp-b2A"/>
@@ -39,7 +39,7 @@
                 <constraint firstAttribute="centerY" secondItem="Opz-jO-22W" secondAttribute="centerY" id="PLi-mg-Dun"/>
                 <constraint firstAttribute="centerX" secondItem="Opz-jO-22W" secondAttribute="centerX" id="UhX-sd-4Rs"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
-                <constraint firstItem="0ws-YM-1wr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="48" id="p58-Bw-8BC"/>
+                <constraint firstAttribute="centerY" secondItem="0ws-YM-1wr" secondAttribute="centerY" constant="100" id="qeE-Z8-WLL"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

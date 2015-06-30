@@ -18,7 +18,7 @@ class ShareLinkController: UIViewController {
     @IBOutlet weak var linkField: UITextField!
     
     @IBAction func send(sender: UIBarButtonItem) {
-        if titleField.text.isEmpty != true && linkField.text.isEmpty != true {
+        if titleField.text.isEmpty != true && linkField.text.isEmpty != true && NSURL(string: linkField.text) != nil{
             var arti = AVObject(className: "Article")
             arti.setObject(titleField.text, forKey: "title")
             arti.setObject(linkField.text, forKey: "content")
@@ -38,7 +38,7 @@ class ShareLinkController: UIViewController {
                 }
             }
         }else{
-            KVNProgress.showErrorWithStatus("标题或链接不能为空")
+            KVNProgress.showErrorWithStatus("标题或链接错误")
         }
     }
     

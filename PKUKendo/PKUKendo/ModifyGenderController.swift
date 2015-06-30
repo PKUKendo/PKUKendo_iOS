@@ -41,7 +41,7 @@ class ModifyGenderController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if me.gender == nil {
+        if me.gender == "保密" {
             maleCell.accessoryType = .Checkmark
             femaleCell.accessoryType = .None
         }

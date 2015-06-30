@@ -14,7 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        application.applicationIconBadgeNumber = 0
+    }
 
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        application.applicationIconBadgeNumber = 0
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        application.applicationIconBadgeNumber = 0
+    }
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         application.setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.None)
         application.setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
@@ -22,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AVOSCloud.setApplicationId("ql84x2woif2u3xk7p3qoska4i558v3ornikfkfga1l3ad59n", clientKey: "frzrwer3k3demoxounucm0ubfqzlvongad1h30avewweycd9")
         AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
-        AVPush.setProductionMode(false)
+       // AVPush.setProductionMode(false)
         
         application.applicationIconBadgeNumber = 0
         
