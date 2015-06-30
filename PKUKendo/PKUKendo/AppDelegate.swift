@@ -9,6 +9,8 @@
 import UIKit
 import AVOSCloud
 
+var configue:AVObject!
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -39,6 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Badge | UIUserNotificationType.Alert |
             UIUserNotificationType.Sound, categories: nil))
         application.registerForRemoteNotifications()
+        
+        var configQ = AVQuery(className: "Configue")
+        configue = configQ.getFirstObject()
         
         var currentUser = AVUser.currentUser()
         if (currentUser == nil) {

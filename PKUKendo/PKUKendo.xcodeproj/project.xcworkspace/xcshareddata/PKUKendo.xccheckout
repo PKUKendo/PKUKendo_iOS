@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>DB457DAF-85B9-4613-8306-9A2DA4470C5B</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>PKUKendo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>5CAE2BE3120384744AAD3A4E934A140629EDB3A5</key>
 		<string>github.com:PKUKendo/PKUKendo_iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>PKUKendo/PKUKendo.xcodeproj/project.xcworkspace</string>
+	<string>PKUKendo/PKUKendo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>5CAE2BE3120384744AAD3A4E934A140629EDB3A5</key>

@@ -32,6 +32,14 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
 //        tableView.layoutMargins = UIEdgeInsetsZero
 //    }
     
+    @IBAction func report(sender: UIButton) {
+        var str = "mailto://president.pkukendo@gmail.com?subject=PKUKendo举报邮件&body=\(article!.userName)用户的文章\(article!.title)或其评论中含有违规内容"
+        str = str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        let url = NSURL(string: str)
+        UIApplication.sharedApplication().openURL(url!)
+    }
+    
+    
     @IBAction func deleteAction(sender: UIButton) {
         var alertcontrl = UIAlertController(title: "确认删除", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         alertcontrl.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: {
@@ -505,8 +513,16 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
            // button.enabled = true
             let editButton = cell.viewWithTag(1010) as! UIButton
             let deleteButton = cell.viewWithTag(1011) as! UIButton
-            
+            let reportButton = cell.viewWithTag(1021) as! UIButton
             if is_article == true{
+                if configue.objectForKey("report") as! Bool == false{
+                    reportButton.enabled = false
+                    reportButton.userInteractionEnabled = false
+                    reportButton.setTitle("", forState: UIControlState.Disabled)
+                }
+                //reportButton.enabled = true
+                //reportButton.userInteractionEnabled = true
+                
                 label.text = "\(article!.likeNum)人 已赞"
                 if article!.userId == AVUser.currentUser().objectId{
                     if article!.is_link == true {
@@ -524,7 +540,9 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
                 }
             }else {
                 label.text = "\(notice!.likeNum)人 已赞"
-                
+                reportButton.enabled = false
+                reportButton.userInteractionEnabled = false
+                reportButton.setTitle("", forState: UIControlState.Disabled)
                 
                 editButton.enabled = false
                 editButton.userInteractionEnabled = false

@@ -631,7 +631,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWd-TP-DyN">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">PKUKendo用户注册协议及隐私条款
+                                <string key="text">PKUKendo用户注册协议及隐私条款
 
 北京大学剑道社提醒您在注册成为用户之前，请认真阅读本《用户协议》，确保您充分理解本协议中的条款。请您审慎阅读并选择接受或者不接受本协议。如果您拒绝接受本协议所涉条款，您将无权注册、登录或使用本协议所涉服务。您的注册、登录、使用等行为将被视为接受本协议，并同意接受本协议各项条款的约束。
 
@@ -715,7 +715,7 @@ PKUKendo会将北京大学剑道社社员的信息（包括但不限于个人详
 
 1.本协议自用户注册PKUKendo之日起生效。
 
-2.北京大学剑道社在法律允许范围内对本协议拥有最终解释权。</mutableString>
+2.北京大学剑道社在法律允许范围内对本协议拥有最终解释权。</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -2413,6 +2413,20 @@ SOFTWARE.</string>
                                                 <segue destination="c9r-jJ-3mi" kind="show" identifier="edit" id="eSw-TI-w22"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" tag="1021" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJU-aP-nrz">
+                                            <rect key="frame" x="318" y="8" width="41" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="41" id="T7X-yI-Wrd"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="41" id="c9j-dM-WIP"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <state key="normal" title="举报">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="report:" destination="AMA-yP-nME" eventType="touchUpInside" id="74j-8h-z5v"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="JUI-bY-VgZ" firstAttribute="leading" secondItem="mNW-m0-aFe" secondAttribute="trailing" constant="8" id="0rD-W4-tRJ"/>
@@ -2421,6 +2435,9 @@ SOFTWARE.</string>
                                         <constraint firstItem="mNW-m0-aFe" firstAttribute="bottom" secondItem="87s-Pg-Nfw" secondAttribute="bottomMargin" id="GxL-1S-eOY"/>
                                         <constraint firstItem="Rb0-0x-P2v" firstAttribute="leading" secondItem="JUI-bY-VgZ" secondAttribute="trailing" constant="8" id="Hi2-qe-esR"/>
                                         <constraint firstItem="JUI-bY-VgZ" firstAttribute="top" secondItem="87s-Pg-Nfw" secondAttribute="topMargin" id="ObW-up-pAL"/>
+                                        <constraint firstItem="tJU-aP-nrz" firstAttribute="bottom" secondItem="87s-Pg-Nfw" secondAttribute="bottomMargin" id="OgN-Td-I0I"/>
+                                        <constraint firstItem="YFt-ve-EEt" firstAttribute="leading" secondItem="tJU-aP-nrz" secondAttribute="trailing" constant="8" id="Rfv-Gc-miH"/>
+                                        <constraint firstItem="tJU-aP-nrz" firstAttribute="top" secondItem="87s-Pg-Nfw" secondAttribute="topMargin" id="Zaj-50-Oyh"/>
                                         <constraint firstItem="YFt-ve-EEt" firstAttribute="bottom" secondItem="87s-Pg-Nfw" secondAttribute="bottomMargin" id="au0-JR-k57"/>
                                         <constraint firstItem="Rb0-0x-P2v" firstAttribute="top" secondItem="87s-Pg-Nfw" secondAttribute="topMargin" id="drp-TA-E79"/>
                                         <constraint firstItem="mNW-m0-aFe" firstAttribute="top" secondItem="87s-Pg-Nfw" secondAttribute="topMargin" id="pgy-ct-79A"/>
@@ -2466,13 +2483,13 @@ SOFTWARE.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lji-aQ-lER">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lji-aQ-lER">
                                 <rect key="frame" x="116" y="144" width="368" height="312"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Xj-a6-vpI">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Xj-a6-vpI">
                                 <rect key="frame" x="16" y="52" width="568" height="496"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2777,6 +2794,6 @@ SOFTWARE.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Mg-Bv-Opr"/>
-        <segue reference="qMQ-Y7-HjO"/>
+        <segue reference="0hB-hI-g0R"/>
     </inferredMetricsTieBreakers>
 </document>
