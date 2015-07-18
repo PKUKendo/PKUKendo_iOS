@@ -137,7 +137,9 @@ class SelfArticleListController: UITableViewController {
 
         var query = AVQuery(className: "Article")
         query.limit = 10
-        query.whereKey("num", lessThan: articleList[articleList.endIndex-1].num)
+        if articleList.isEmpty != true{
+            query.whereKey("num", lessThan: articleList[articleList.endIndex-1].num)
+        }
         query.whereKey("user", equalTo: AVUser.currentUser())
         query.orderByDescending("num")
         query.findObjectsInBackgroundWithBlock(){

@@ -48,6 +48,8 @@ class ArticleListController: UITableViewController ,ArticleChangeViewControllerD
         optionMenu.addAction(postArticleAction)
         optionMenu.addAction(shareLinkAction)
         optionMenu.addAction(cancelAction)
+        optionMenu.popoverPresentationController?.sourceView = self.view
+        optionMenu.popoverPresentationController?.barButtonItem = addButton
         self.presentViewController(optionMenu, animated: true, completion: nil)
     }
     
@@ -171,7 +173,7 @@ class ArticleListController: UITableViewController ,ArticleChangeViewControllerD
                         articleItem.userName = user.objectForKey("NickName") as! String
                         var avartarFile = user.objectForKey("Avartar") as? AVFile
                         if avartarFile != nil{
-                            avartarFile?.getThumbnail(true, width: 64, height: 64){
+                            avartarFile?.getThumbnail(true, width: 200, height: 200){
                                 (img:UIImage!, error:NSError!) -> Void in
                                 if error == nil{
                                     articleItem.avartar = img
@@ -262,7 +264,9 @@ class ArticleListController: UITableViewController ,ArticleChangeViewControllerD
         case 0:
             var query = AVQuery(className: "Article")
             query.limit = 10
-            query.whereKey("num", lessThan: articleList[articleList.endIndex-1].num)
+            if articleList.isEmpty != true{
+                query.whereKey("num", lessThan: articleList[articleList.endIndex-1].num)
+            }
             query.orderByDescending("num")
             query.findObjectsInBackgroundWithBlock(){
                 (results:[AnyObject]!, error:NSError!) -> Void in
@@ -326,7 +330,9 @@ class ArticleListController: UITableViewController ,ArticleChangeViewControllerD
         case 1:
             var query = AVQuery(className: "Notice")
             query.limit = 10
-            query.whereKey("num", lessThan: noticeList[noticeList.endIndex-1].num)
+            if noticeList.isEmpty != true{
+                query.whereKey("num", lessThan: noticeList[noticeList.endIndex-1].num)
+            }
             query.orderByDescending("num")
             query.findObjectsInBackgroundWithBlock(){
                 (results:[AnyObject]!, error:NSError!) -> Void in

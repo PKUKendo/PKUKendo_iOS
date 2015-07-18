@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pxw-bc-apZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pxw-bc-apZ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1244,7 +1244,7 @@ PKUKendo会将北京大学剑道社社员的信息（包括但不限于个人详
                                     <constraint firstAttribute="height" constant="100" id="Z1q-fO-0ME"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version:   1.0.0" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBB-7q-zAt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version:   1.0.1" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBB-7q-zAt">
                                 <rect key="frame" x="31" y="428" width="538" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="highlightedColor"/>
@@ -2091,7 +2091,7 @@ SOFTWARE.</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNX-PE-7p9">
-                                <rect key="frame" x="16" y="120" width="568" height="423"/>
+                                <rect key="frame" x="16" y="120" width="568" height="121"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2103,7 +2103,7 @@ SOFTWARE.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ukm-vE-Tvj" firstAttribute="top" secondItem="QO1-Q5-hDb" secondAttribute="bottom" constant="8" id="4hW-1L-IMq"/>
-                            <constraint firstItem="D5s-fT-X8E" firstAttribute="top" secondItem="XNX-PE-7p9" secondAttribute="bottom" constant="8" id="4uN-eA-eHO"/>
+                            <constraint firstItem="D5s-fT-X8E" firstAttribute="top" secondItem="XNX-PE-7p9" secondAttribute="bottom" constant="310" id="4uN-eA-eHO"/>
                             <constraint firstItem="XNX-PE-7p9" firstAttribute="trailing" secondItem="9qH-eJ-4vs" secondAttribute="trailingMargin" id="IP7-j8-bbm"/>
                             <constraint firstItem="ukm-vE-Tvj" firstAttribute="leading" secondItem="9qH-eJ-4vs" secondAttribute="leadingMargin" id="PPq-oW-Ec0"/>
                             <constraint firstItem="ukm-vE-Tvj" firstAttribute="trailing" secondItem="9qH-eJ-4vs" secondAttribute="trailingMargin" id="VNV-aI-cFz"/>
@@ -2140,7 +2140,7 @@ SOFTWARE.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView tag="1007" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hTt-dw-Pxe">
-                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -2483,14 +2483,14 @@ SOFTWARE.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lji-aQ-lER">
-                                <rect key="frame" x="116" y="144" width="368" height="312"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lji-aQ-lER">
+                                <rect key="frame" x="116" y="164" width="368" height="62"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Xj-a6-vpI">
-                                <rect key="frame" x="16" y="52" width="568" height="496"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Xj-a6-vpI">
+                                <rect key="frame" x="16" y="72" width="568" height="174"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2506,9 +2506,9 @@ SOFTWARE.</string>
                             <constraint firstItem="1Xj-a6-vpI" firstAttribute="top" secondItem="4YZ-IM-HTb" secondAttribute="bottom" constant="8" id="Rp7-lh-j2j"/>
                             <constraint firstItem="lji-aQ-lER" firstAttribute="leading" secondItem="djQ-Bo-2Fv" secondAttribute="leadingMargin" constant="100" id="WpS-Yi-wVC"/>
                             <constraint firstItem="lji-aQ-lER" firstAttribute="trailing" secondItem="djQ-Bo-2Fv" secondAttribute="trailingMargin" constant="-100" id="bpY-eC-DIU"/>
-                            <constraint firstItem="BKP-HK-OrX" firstAttribute="top" secondItem="1Xj-a6-vpI" secondAttribute="bottom" constant="8" id="fzO-w6-0jR"/>
+                            <constraint firstItem="BKP-HK-OrX" firstAttribute="top" secondItem="1Xj-a6-vpI" secondAttribute="bottom" constant="310" id="fzO-w6-0jR"/>
                             <constraint firstItem="1Xj-a6-vpI" firstAttribute="leading" secondItem="djQ-Bo-2Fv" secondAttribute="leadingMargin" id="jcK-zh-phC"/>
-                            <constraint firstItem="BKP-HK-OrX" firstAttribute="top" secondItem="lji-aQ-lER" secondAttribute="bottom" constant="100" id="o7e-gN-gAM"/>
+                            <constraint firstItem="BKP-HK-OrX" firstAttribute="top" secondItem="lji-aQ-lER" secondAttribute="bottom" constant="330" id="o7e-gN-gAM"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -2612,15 +2612,15 @@ SOFTWARE.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="点击此处添加标题" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9uz-Zu-aZ8">
-                                <rect key="frame" x="16" y="52" width="568" height="40"/>
+                                <rect key="frame" x="16" y="72" width="568" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="YI0-VN-zmt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wd5-YJ-kFE">
-                                <rect key="frame" x="16" y="100" width="568" height="448"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wd5-YJ-kFE">
+                                <rect key="frame" x="16" y="120" width="568" height="126"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2628,7 +2628,7 @@ SOFTWARE.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jnm-ga-bc1" firstAttribute="top" secondItem="Wd5-YJ-kFE" secondAttribute="bottom" constant="8" id="FeF-Xs-MkS"/>
+                            <constraint firstItem="jnm-ga-bc1" firstAttribute="top" secondItem="Wd5-YJ-kFE" secondAttribute="bottom" constant="310" id="FeF-Xs-MkS"/>
                             <constraint firstItem="9uz-Zu-aZ8" firstAttribute="top" secondItem="7WG-ZG-nLu" secondAttribute="bottom" constant="8" id="I35-1p-7GA"/>
                             <constraint firstItem="Wd5-YJ-kFE" firstAttribute="leading" secondItem="e8b-pN-p3R" secondAttribute="leadingMargin" id="UwG-cz-3m5"/>
                             <constraint firstItem="Wd5-YJ-kFE" firstAttribute="top" secondItem="9uz-Zu-aZ8" secondAttribute="bottom" constant="8" id="WHF-as-GOM"/>

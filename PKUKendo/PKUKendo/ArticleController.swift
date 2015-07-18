@@ -207,17 +207,6 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
  
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-    
-        
-        //self.tabBarController?.tabBar.hidden = true
-//        self.tableView.frame = CGRect(x: self.tableView.frame.origin.x, y: self.tableView.frame.origin.y, width: self.tableView.frame.size.width , height: self.tableView.frame.size.height + 100)
-    }
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-        //println("123")
         var userId = AVUser.currentUser().objectId
         if is_article == true{
             var articleId = article!.id
@@ -227,9 +216,7 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
             query.findObjectsInBackgroundWithBlock(){
                 (results:[AnyObject]!,error:NSError!) -> Void in
                 if error == nil && results.count > 0{
-                    var cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0))! as UITableViewCell
-                    (cell.viewWithTag(1003) as! UIButton).enabled = false
-                    (cell.viewWithTag(1003) as! UIButton).userInteractionEnabled = false
+                    self.has_like = true
                 }
                 
             }
@@ -241,14 +228,23 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
             query.findObjectsInBackgroundWithBlock(){
                 (results:[AnyObject]!,error:NSError!) -> Void in
                 if error == nil && results.count > 0{
-                    var cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0))! as UITableViewCell
-                    (cell.viewWithTag(1003) as! UIButton).enabled = false
-                    (cell.viewWithTag(1003) as! UIButton).userInteractionEnabled = false
+                    self.has_like = true
                 }
                 
             }
         }
-        //self.tableView.footer.beginRefreshing()
+
+    
+        
+        //self.tabBarController?.tabBar.hidden = true
+//        self.tableView.frame = CGRect(x: self.tableView.frame.origin.x, y: self.tableView.frame.origin.y, width: self.tableView.frame.size.width , height: self.tableView.frame.size.height + 100)
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        //println("123")
+                //self.tableView.footer.beginRefreshing()
         
         var query = AVQuery(className: "Comment")
         query.orderByAscending("num")
@@ -277,17 +273,30 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
                     commentItem.username = user.objectForKey("NickName") as! String
                     var avartarFile = user.objectForKey("Avartar") as? AVFile
                     if avartarFile != nil{
-                        var imgData = avartarFile?.getData()
-                        if imgData != nil{
-                            commentItem.avartar = UIImage(data: imgData!)
-                        } else {
-                            if userGender == "男"{
-                                commentItem.avartar = UIImage(named: "男生默认头像")
-                            }else {
-                                commentItem.avartar = UIImage(named: "女生默认头像")
+                        avartarFile?.getThumbnail(true, width: 64, height: 64){
+                            (img:UIImage!, error:NSError!) -> Void in
+                            if error == nil{
+                                commentItem.avartar = img
+                            }else{
+                                if userGender == "男"{
+                                    commentItem.avartar = UIImage(named: "男生默认头像")
+                                }else {
+                                    commentItem.avartar = UIImage(named: "女生默认头像")
+                                }
                             }
-                           
+                            self.tableView.reloadData()
                         }
+//                        var imgData = avartarFile?.getData()
+//                        if imgData != nil{
+//                            commentItem.avartar = UIImage(data: imgData!)
+//                        } else {
+//                            if userGender == "男"{
+//                                commentItem.avartar = UIImage(named: "男生默认头像")
+//                            }else {
+//                                commentItem.avartar = UIImage(named: "女生默认头像")
+//                            }
+//                           
+//                        }
                     } else {
                         if userGender == "男"{
                             commentItem.avartar = UIImage(named: "男生默认头像")
@@ -509,7 +518,12 @@ class ArticleController: UITableViewController,ArticleEditViewControllerDelegate
         } else if indexPath.row == 3{
             let cell = tableView.dequeueReusableCellWithIdentifier("likeCell") as! UITableViewCell
             let label = cell.viewWithTag(1004) as! UILabel
-           // let button = cell.viewWithTag(1003) as! UIButton
+            
+            let like_button = cell.viewWithTag(1003) as! UIButton
+            if has_like == true{
+                like_button.enabled = false
+                like_button.userInteractionEnabled = false
+            }
            // button.enabled = true
             let editButton = cell.viewWithTag(1010) as! UIButton
             let deleteButton = cell.viewWithTag(1011) as! UIButton
